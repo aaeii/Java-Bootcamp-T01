@@ -36,25 +36,27 @@ public class Main {
 
     private static void inputUser(Scanner in, int count, List<User> users) {
         for (int i = 0; i < count; i++) {
+            String name = "";
             int age = 0;
             boolean validAge = false;
+            System.out.println("Enter the name:");
+            name = in.nextLine();
             while (!validAge) {
-                String name = in.nextLine();
+                System.out.println("Enter the age:");
                 String ageInput = in.nextLine();
                 try {
                     age = Integer.parseInt(ageInput);
                     if (age > 0) {
-                        validAge = true;
+                        validAge = true; 
                     } else {
-                        System.out.println("Incorrect input. Age <= 0");
+                        System.out.println("Incorrect input. Age must be greater than 0. Please try again.");
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Couldn't parse a number. Please, try again");
+                    System.out.println("Couldn't parse a number. Please, try again.");
                 }
-                users.add(new User(name, age));
-
             }
-
+    
+            users.add(new User(name, age));
         }
     }
 
